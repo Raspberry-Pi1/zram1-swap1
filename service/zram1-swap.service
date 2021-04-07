@@ -1,0 +1,17 @@
+[Unit]
+Description=zram1 swap service
+Requires=systemd-modules-load.service
+Before=shutdown.target
+#After=
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/zram1-swap.sh start
+ExecStop=/usr/local/sbin/zram1-swap.sh stop
+RemainAfterExit=true
+
+[Install]
+WantedBy=sysinit.target
+#RequiredBy=
+
+# vim:ft=systemd
